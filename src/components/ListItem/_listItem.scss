@@ -1,0 +1,99 @@
+@use "../../abstracts/colors" as c;
+@use "../../abstracts/variables" as v;
+@use "../../abstracts/mixins" as *;
+@use "../../base/functions" as func;
+
+.job-item {
+  @include flex(row, flex-start, center);
+  gap: v.$main-item-spacing;
+  padding: v.$main-item-spacing;
+  padding-left: calc(v.$main-item-spacing + v.$job-item-accent-left-border-width);
+  background-color: c.$light-grayish-cyan-filter;
+  border-radius: 0.5em;
+  box-shadow: v.$box-shadow;
+  @media (width <= v.$mobile) {
+    position: relative;
+  }
+
+  &--accent {
+    border-left: v.$job-item-accent-left-border-width solid c.$desaturated-dark-cyan;
+  }
+
+  &__image {
+    @media (width <= v.$mobile) {
+      position: absolute;
+      top: 0;
+      width: func.rem(48);
+      translate: 0 -50%;
+    }
+  }
+
+  &__main-wrapper {
+    flex-grow: 1;
+    @include flex(row, space-between, center);
+    gap: v.$main-item-spacing;
+    @media (width <= v.$mobile) {
+      @include flex(column);
+    }
+  }
+
+  &__company-wrapper {
+    @include flex(row, flex-start, center);
+    gap: 1em;
+    font-weight: bold;
+  }
+
+  &__company-name {
+    color: c.$desaturated-dark-cyan;
+  }
+
+  &__badge {
+    border-radius: 100vw;
+    padding: 0.25em 0.5em;
+    font-size: func.rem(13);
+    color: c.$light-grayish-cyan-filter;
+    text-transform: uppercase;
+
+    &--new {
+      background-color: c.$desaturated-dark-cyan;
+    }
+    &--featured {
+      background-color: c.$very-dark-grayish-cyan;
+    }
+  }
+
+  &__position {
+    margin-block: 0.75em;
+    line-height: 100%;
+    color: c.$very-dark-grayish-cyan;
+    cursor: pointer;
+    transition: v.$main-transition;
+    &:where(:hover, :focus-within) {
+      color: c.$desaturated-dark-cyan;
+    }
+    @media (width <= v.$mobile) {
+      font-size: 1em;
+    }
+  }
+
+  &__details {
+    @include flex(row, flex-start, center);
+    gap: 1rem;
+    color: c.$very-dark-grayish-cyan;
+
+    & > hr {
+      margin: 0;
+      border: 0;
+      height: 3px;
+      width: 3px;
+      border-radius: 100vw;
+      background: c.$very-dark-grayish-cyan;
+    }
+  }
+
+  &__btns-wrapper {
+    @include flex(row);
+    gap: 1em;
+    flex-wrap: wrap;
+  }
+}

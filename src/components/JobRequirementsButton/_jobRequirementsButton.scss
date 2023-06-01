@@ -1,0 +1,52 @@
+@use "../../abstracts/colors" as c;
+@use "../../abstracts/variables" as v;
+@use "../../abstracts/mixins" as *;
+
+.job-requirements-btn {
+  padding: 0.25em 0.5em;
+  background-color: c.$desaturated-dark-cyan-light;
+  border: none;
+  border-radius: v.$border-radius;
+  font: inherit;
+  color: c.$desaturated-dark-cyan;
+  font-weight: bold;
+  cursor: pointer;
+  transition: v.$main-transition;
+  outline-offset: 0.25em;
+
+  &:where(:hover, :focus-visible):not(.job-requirements-search-btn) {
+    background-color: c.$desaturated-dark-cyan;
+    color: c.$light-grayish-cyan-filter;
+  }
+}
+
+.job-requirements-search-btn {
+  &__container {
+    @include flex(row, flex-start, center);
+    cursor: pointer;
+    border: none;
+    font: inherit;
+    padding: 0;
+    outline-offset: 0.25em;
+  }
+
+  border-radius: 0;
+  border-top-left-radius: v.$border-radius;
+  border-bottom-left-radius: v.$border-radius;
+
+  &__x-btn {
+    background: c.$desaturated-dark-cyan;
+    height: 100%;
+    display: grid;
+    place-content: center;
+    padding-inline: 0.5em;
+    border-top-right-radius: v.$border-radius;
+    border-bottom-right-radius: v.$border-radius;
+    transition: v.$main-transition;
+  }
+}
+
+.job-requirements-search-btn__container:where(:hover, :focus-visible)
+  .job-requirements-search-btn__x-btn {
+  background-color: c.$very-dark-grayish-cyan;
+}

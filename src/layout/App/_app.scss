@@ -1,0 +1,5 @@
+@use "../../abstracts/colors" as c;
+
+body {
+  background-color: c.$light-grayish-cyan-background;
+}

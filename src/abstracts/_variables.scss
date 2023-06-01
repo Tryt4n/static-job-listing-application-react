@@ -1,1 +1,14 @@
+@use "../base/functions" as func;
+@use "../abstracts/colors" as c;
+
 $main-transition: 300ms ease-in-out;
+$main-item-spacing: 2rem;
+
+$job-item-accent-left-border-width: func.rem(5);
+
+$box-shadow: c.$dark-grayish-cyan 0 func.rem(4) func.rem(12);
+
+$border-radius: 0.25em;
+
+//* Media Queries *\\
+$mobile: func.rem(1024);

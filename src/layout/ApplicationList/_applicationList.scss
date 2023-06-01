@@ -1,0 +1,17 @@
+@use "../../abstracts/mixins" as *;
+@use "../../abstracts/variables" as v;
+
+.main-content-container {
+  margin-block: 3rem;
+}
+
+.job-items-container {
+  @include flex(column);
+  gap: v.$main-item-spacing;
+
+  @media (width <= v.$mobile) {
+    display: grid;
+    place-content: center;
+    gap: calc(v.$main-item-spacing * 1.5);
+  }
+}

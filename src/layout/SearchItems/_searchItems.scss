@@ -1,0 +1,66 @@
+@use "../../abstracts/colors" as c;
+@use "../../abstracts/variables" as v;
+@use "../../abstracts/mixins" as *;
+@use "../../base/functions" as func;
+
+.search-params {
+  &__main-container {
+    translate: 0 -50%;
+    @media (width <= v.$mobile) {
+      display: grid;
+      place-items: center;
+      translate: 0 -2rem;
+    }
+  }
+
+  &__container {
+    margin-bottom: -2rem;
+    @include flex(row, flex-start, center);
+    gap: v.$main-item-spacing;
+    padding-block: 1rem;
+    padding-inline: v.$main-item-spacing;
+    background-color: c.$light-grayish-cyan-filter;
+    box-shadow: v.$box-shadow;
+    border-radius: 0.5em;
+    @media (width <= v.$mobile) {
+      margin-bottom: -1rem;
+      width: min(100%, func.rem(515));
+    }
+  }
+
+  &__params {
+    flex-grow: 1;
+    @include flex();
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  &__clear-btn {
+    position: relative;
+    border: none;
+    padding: 0;
+    background: transparent;
+    font: inherit;
+    font-weight: bold;
+    color: c.$dark-grayish-cyan;
+    cursor: pointer;
+    transition: v.$main-transition;
+    outline-offset: 0.25em;
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: func.rem(1);
+      width: 0;
+      background-color: c.$desaturated-dark-cyan;
+      transition: v.$main-transition;
+    }
+    &:where(:hover, :focus-visible) {
+      color: c.$desaturated-dark-cyan;
+    }
+    &:where(:hover, :focus-visible).search-params__clear-btn::after {
+      width: 100%;
+    }
+  }
+}
