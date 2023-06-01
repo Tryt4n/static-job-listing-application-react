@@ -9,10 +9,10 @@
   height: func.rem(156);
 
   @media (width > v.$mobile) {
-    background-image: url("./images/bg-header-desktop.svg");
+    background-image: url("/images/bg-header-desktop.svg");
   }
 
   @media (width <= v.$mobile) {
-    background-image: url("./images/bg-header-mobile.svg");
+    background-image: url("/images/bg-header-mobile.svg");
   }
 }
